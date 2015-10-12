@@ -71,7 +71,7 @@ Alternatively you can also use `before` instead or together with `after`.
 
 ```js
 listeners.add("test", function () { });
-this.listeners.remove("test");
+listeners.remove("test");
 ```
 
 
