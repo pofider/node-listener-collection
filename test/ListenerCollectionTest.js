@@ -2,7 +2,7 @@
 
 var assert = require("assert"),
     should = require("should"),
-    ListenerCollection = require("../lib/listenerCollection.js"),
+    ListenerCollection = require("../"),
     q = require("q");
 
 describe('ListenersCollection', function () {
@@ -263,5 +263,6 @@ describe('ListenersCollection', function () {
             done();
         });
     });
+
 
 });
