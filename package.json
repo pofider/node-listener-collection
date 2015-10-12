@@ -1,11 +1,15 @@
 {
   "name": "listener-collection",
   "version": "0.0.2",
-  "description": "",
+  "description": "node.js library adding async support to events",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
+   "keywords": [
+    "event",
+    "async"    
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pofider/node-listener-collection.git"
