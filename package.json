@@ -1,6 +1,6 @@
 {
   "name": "listener-collection",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "node.js library adding async support to events",
   "main": "index.js",
   "scripts": {
