@@ -1,1 +1,1 @@
-﻿module.exports = require("./lib/listenerCollection");
+module.exports = require('./lib/listenerCollection')
