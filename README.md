@@ -7,7 +7,7 @@ This library extends the standard event mechanism with ability to wait until all
 > npm install listener-collection
 
 
-##Callback based
+## Callback based
 ```js
 var ListenerCollection = require("listener-collection");
 
@@ -32,7 +32,7 @@ listeners.fire("A", "B", function() {
 });
 ```
 
-##Promise based
+## Promise based
 ```js
 var ListenerCollection = require("listener-collection");
 
@@ -48,7 +48,7 @@ listeners.fire("A", "B").then(function() {
 });
 ```
 
-##Listener context
+## Listener context
 
 ```js
 listeners.add("a name", context, function() {
@@ -56,7 +56,7 @@ listeners.add("a name", context, function() {
 });
 ```
 
-##Listener position
+## Listener position
 
 Listeners are executed one by one in order they were added.  If you want to add a listener to a particular position you can use `insert` and specify the condition when the listener should be invoked.
 
@@ -67,7 +67,7 @@ listeners.insert({ after: "listener1" }, "listener3", function() { ... });
 ```
 Alternatively you can also use `before` instead or together with `after`. 
 
-##Removing listener
+## Removing listener
 
 ```js
 listeners.add("test", function () { });
@@ -75,7 +75,7 @@ listeners.remove("test");
 ```
 
 
-##Hooks
+## Hooks
 
 
 ```js
@@ -92,5 +92,5 @@ listeners.postFail(function(err) {
 });
 ```
 
-##License 
+## License 
 MIT
