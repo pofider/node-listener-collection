@@ -1,8 +1,7 @@
 /* globals describe, it, beforeEach */
-var assert = require('assert')
+const assert = require('assert')
+const ListenerCollection = require('../')
 require('should')
-var ListenerCollection = require('../')
-var Promise = require('bluebird')
 
 describe('ListenersCollection', function () {
   beforeEach(function () {
@@ -10,7 +9,7 @@ describe('ListenersCollection', function () {
   })
 
   it('should fire listeners callback', function (done) {
-    var invokeCount = 0
+    let invokeCount = 0
 
     this.listeners.add('test', function (next) {
       invokeCount++
@@ -24,7 +23,7 @@ describe('ListenersCollection', function () {
   })
 
   it('remove listener should remove function', function (done) {
-    var invokeCount = 0
+    let invokeCount = 0
 
     this.listeners.add('test', function (next) {
       invokeCount++
@@ -52,7 +51,8 @@ describe('ListenersCollection', function () {
   })
 
   it('should be able to use context', function (done) {
-    var context = {x: 1}
+    const context = { x: 1 }
+
     this.listeners.add('test', context, function (next) {
       assert.equal(1, this.x)
       next()
@@ -64,7 +64,7 @@ describe('ListenersCollection', function () {
   })
 
   it('insert should respect the after condition', function (done) {
-    var invocations = []
+    const invocations = []
 
     this.listeners.add('test', function (next) {
       invocations.push('test')
@@ -91,14 +91,14 @@ describe('ListenersCollection', function () {
   })
 
   it('insert should respect the after and before condition', function (done) {
-    var invocations = []
+    const invocations = []
 
     this.listeners.add('test3', function (next) {
       invocations.push('test3')
       next()
     })
 
-    this.listeners.insert({ after: 'test', 'before': 'test3' }, 'test2', this, function (next) {
+    this.listeners.insert({ after: 'test', before: 'test3' }, 'test2', this, function (next) {
       invocations.push('test2')
       next()
     })
@@ -112,7 +112,7 @@ describe('ListenersCollection', function () {
   })
 
   it('insert should work if the conditioned element not present', function (done) {
-    var invocations = []
+    const invocations = []
 
     this.listeners.add('test3', function (next) {
       invocations.push('test3')
@@ -147,7 +147,7 @@ describe('ListenersCollection', function () {
   })
 
   it('firePromise should fire with arguments', function () {
-    var obj = {}
+    const obj = {}
 
     this.listeners.add('test', function (o) {
       o.a = true
@@ -168,7 +168,8 @@ describe('ListenersCollection', function () {
   })
 
   it('firePromise rethrow error', function () {
-    var listeners2 = new ListenerCollection()
+    const listeners2 = new ListenerCollection()
+
     listeners2.add('test', function () {
       return new Promise(function (resolve, reject) {
         reject(new Error('foo'))
@@ -190,7 +191,8 @@ describe('ListenersCollection', function () {
   })
 
   it('firePromise should apply pre hooks', function () {
-    var i = 0
+    let i = 0
+
     this.listeners.pre(function () {
       i++
     })
@@ -207,7 +209,8 @@ describe('ListenersCollection', function () {
   })
 
   it('firePromise should apply post hooks', function () {
-    var postResult
+    let postResult
+
     this.listeners.post(function () {
       postResult = this.key
     })
@@ -222,7 +225,8 @@ describe('ListenersCollection', function () {
   })
 
   it('firePromise should apply postError hooks', function () {
-    var error
+    let error
+
     this.listeners.postFail(function (err) {
       error = err
     })
